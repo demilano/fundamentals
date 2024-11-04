@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 jobs:
   Build:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
       - run: echo "triggered by:" ${{ github.event_name }} ${{ github.event.action }}
       - run: echo "referencing branch:" ${{ github.repository }} ${{ github.ref }}
