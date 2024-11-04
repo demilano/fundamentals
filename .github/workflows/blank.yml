@@ -1,0 +1,19 @@
+name: GitHub Actions Demo
+ 
+on: 
+  push:
+    branches: main
+    paths-ignore: .github
+  pull_request:
+    branches: main
+  schedule:
+    - cron: 15 6 * * SUN
+  workflow_dispatch:
+jobs:
+  Build:
+    runs-on: "ubuntu-latest"
+    steps:
+      - run: echo "triggered by:" ${{ github.event_name }} ${{ github.event.action }}
+      - run: echo "referencing branch:" ${{ github.repository }} ${{ github.ref }}
+      - run: |
+          echo "::set-output name=FILELIST::$(find . -name '*' -print)"
